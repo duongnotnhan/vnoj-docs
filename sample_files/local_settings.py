@@ -17,7 +17,7 @@ DEBUG = True  # Change to False once you are done with runserver testing.
 
 # Uncomment and set to the domain names this site is intended to serve.
 # You must do this once you set DEBUG to False.
-#ALLOWED_HOSTS = ['oj.vnoi.info']
+ALLOWED_HOSTS = ['localhost']
 
 # Optional apps that DMOJ can make use of.
 INSTALLED_APPS += (
@@ -38,7 +38,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dmoj',
         'USER': 'dmoj',
-        'PASSWORD': '<mariadb user password>',
+        'PASSWORD': 'admin',
         'HOST': '127.0.0.1',
         'OPTIONS': {
             'charset': 'utf8mb4',
@@ -83,12 +83,12 @@ STATICFILES_FINDERS += ('compressor.finders.CompressorFinder',)
 
 # The following block is included for your convenience, if you want
 # to use Gmail.
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_USE_TLS = True
-#EMAIL_HOST = 'smtp.gmail.com'
-#EMAIL_HOST_USER = '<your account>@gmail.com'
-#EMAIL_HOST_PASSWORD = '<your password>'
-#EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'duongphucthiennhan.8@gmail.com'
+EMAIL_HOST_PASSWORD = 'lbwq taka wsrh sxmk'
+EMAIL_PORT = 587
 
 # To use Mailgun, uncomment this block.
 # You will need to run `pip install django-mailgun` to get `MailgunBackend`.
@@ -106,11 +106,11 @@ STATICFILES_FINDERS += ('compressor.finders.CompressorFinder',)
 # A tuple of (name, email) pairs that specifies those who will be mailed
 # when the server experiences an error when DEBUG = False.
 ADMINS = (
-    ('Your Name', 'your.email@example.com'),
+    ('DuongNhanAC', 'duongphucthiennhan.8@gmail.com'),
 )
 
 # The sender for the aforementioned emails.
-SERVER_EMAIL = 'VNOJ: VNOI Online Judge <vnoj@vnoi.info>'
+SERVER_EMAIL = 'DNAOJ: DuongNhanAC Online Judge <dnaoj.admin@gmail.com>'
 
 
 ################################################
@@ -122,13 +122,13 @@ SERVER_EMAIL = 'VNOJ: VNOI Online Judge <vnoj@vnoi.info>'
 # webserver to serve the static files. This is the directory where all the
 # static files DMOJ uses will be collected to.
 # You must configure your webserver to serve this directory as /static/ in production.
-STATIC_ROOT = '/tmp/static'
+STATIC_ROOT = '/home/vnoj/static'
 
 # URL to access static files.
-#STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
 # Uncomment to use hashed filenames with the cache framework.
-#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 
 ############################################
@@ -136,22 +136,22 @@ STATIC_ROOT = '/tmp/static'
 ############################################
 
 ## DMOJ site display settings.
-SITE_NAME = 'VNOJ'
-SITE_FULL_URL = 'https://oj.vnoi.info'
-SITE_LONG_NAME = 'VNOJ: VNOI Online Judge'
-SITE_ADMIN_EMAIL = 'admin@example.com'
-TERMS_OF_SERVICE_URL = '//oj.vnoi.info/tos/'  # Use a flatpage.
+SITE_NAME = 'DNAOJ'
+SITE_FULL_URL = 'dnaoj.ddns.net'
+SITE_LONG_NAME = 'DNAOJ: DuongNhanAC Online Judge'
+SITE_ADMIN_EMAIL = 'duongphucthiennhan.8@gmail.com'
+TERMS_OF_SERVICE_URL = ''  # Use a flatpage.
 
 ## Media files settings.
 # This is the directory where all the media files are stored.
 # Change this to somewhere more permanent.
 # You must configure your webserver to serve this directory in production.
-MEDIA_ROOT = '/tmp/media'
+MEDIA_ROOT = '/home/vnoj/media'
 
 ## Problem data settings.
 # This is the directory where all the problem data are stored.
 # Change this to somewhere more permanent.
-DMOJ_PROBLEM_DATA_ROOT = '/tmp/problem_data/'
+DMOJ_PROBLEM_DATA_ROOT = '/home/vnoj/problem_data'
 
 ## Bridge controls.
 # The judge connection address and port; where the judges will connect to the site.
@@ -172,7 +172,7 @@ BAD_MAIL_PROVIDERS = set()
 # The number of submissions that a staff user can rejudge at once without
 # requiring the permission 'Rejudge a lot of submissions'.
 # Uncomment to change the submission limit.
-#DMOJ_SUBMISSIONS_REJUDGE_LIMIT = 10
+DMOJ_SUBMISSIONS_REJUDGE_LIMIT = 100
 
 ## Event server.
 # Uncomment to enable live updating.
@@ -203,8 +203,8 @@ BAD_MAIL_PROVIDERS = set()
 #EVENT_DAEMON_AMQP_EXCHANGE = '<AMQP exchange to use>'
 
 ## Celery
-#CELERY_BROKER_URL = 'redis://localhost:6379'
-#CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 
 ## CDN control.
 # Base URL for a copy of Ace editor.
@@ -241,41 +241,41 @@ TIMEZONE_MAP = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_M
 #DMOJ_PDF_PDFOID_URL = '<URL to your pdfoid install>.'
 
 # Directory to cache the PDF.
-#DMOJ_PDF_PROBLEM_CACHE = '/home/dmoj-uwsgi/pdfcache'
+DMOJ_PDF_PROBLEM_CACHE = '/home/vnoj/pdfcache'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.
-#DMOJ_PDF_PROBLEM_INTERNAL = '/pdfcache'
+DMOJ_PDF_PROBLEM_INTERNAL = '/pdfcache'
 
 ## Data download settings.
 # Uncomment to allow users to download their data.
-#DMOJ_USER_DATA_DOWNLOAD = True
+DMOJ_USER_DATA_DOWNLOAD = True
 
 # Directory to cache user data downloads.
 # It is the administrator's responsibility to clean up old files.
-#DMOJ_USER_DATA_CACHE = '/home/dmoj-uwsgi/userdatacache'
+DMOJ_USER_DATA_CACHE = '/home/vnoj/userdatacache'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.
-#DMOJ_USER_DATA_INTERNAL = '/userdatacache'
+DMOJ_USER_DATA_INTERNAL = '/userdatacache'
 
 # How often a user can download their data.
-#DMOJ_USER_DATA_DOWNLOAD_RATELIMIT = datetime.timedelta(days=1)
+DMOJ_USER_DATA_DOWNLOAD_RATELIMIT = datetime.timedelta(days=30)
 
 # Uncomment to allow contest authors to download contest data
-#DMOJ_CONTEST_DATA_DOWNLOAD = True
+DMOJ_CONTEST_DATA_DOWNLOAD = True
 
 # Directory to cache contest data downloads.
 # It is the administrator's responsibility to clean up old files.
-#DMOJ_CONTEST_DATA_CACHE = '/home/dmoj-uwsgi/contestdatacache'
+DMOJ_CONTEST_DATA_CACHE = '/home/vnoj/contestdatacache'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.
-#DMOJ_CONTEST_DATA_INTERNAL = '/contestdatacache'
+DMOJ_CONTEST_DATA_INTERNAL = '/contestdatacache'
 
 # How often contest data can be exported.
 # This applies per contest, not per user.
-#DMOJ_CONTEST_DATA_DOWNLOAD_RATELIMIT = datetime.timedelta(days=1)
+DMOJ_CONTEST_DATA_DOWNLOAD_RATELIMIT = datetime.timedelta(days=90)
 
 ## ======== Logging Settings ========
 # Documentation: https://docs.djangoproject.com/en/3.2/ref/settings/#logging
